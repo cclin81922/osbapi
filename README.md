@@ -46,3 +46,8 @@ TODO
 * [osbapi-sdk](https://github.com/cclin81922/osbapi-sdk)
 * [osbapi-broker](https://github.com/cclin81922/osbapi-broker)
 * [osbapi-baas](https://github.com/cclin81922/osbapi-baas)
+
+# Related Resources
+
+* [Open Service Broker API](https://www.openservicebrokerapi.org/)
+* [Kubernetes Service Catalog](https://svc-cat.io/)
