@@ -1,6 +1,4 @@
-# Usage
-
-For local development with Docker-for-Mac K8s
+# For local development with Docker-for-Mac K8s
 
 First, bring up baas
 
@@ -38,11 +36,9 @@ kubectl -n app-skeleton get pod
 kubectl -n app-skeleton logs <app-skeleton pod>
 ```
 
-For test with GKE
+# For test with GKE
 
-```
 TODO
-```
 
 # Related Projects
 
