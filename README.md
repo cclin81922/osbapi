@@ -72,6 +72,8 @@ WAIT UNTIL GKE CLUSTER READY
 
 kubectl apply -f manifests/service-account-helm.yaml
 helm init --service-account helm
+
+WAIT UNTIL HELM TILLER READY
 ```
 
 Second, bring up baas
