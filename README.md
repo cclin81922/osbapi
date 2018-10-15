@@ -43,14 +43,21 @@ go get -u github.com/cclin81922/osbapi-app/cmd/osbapiapp
 cd ~/go/src/github.com/cclin81922/osbapi-app
 make provision-svc
 make bind-svc
-make TAG=latest PULL=Never make deploy-app
-```
 
-Verify
+kubectl get secrets -n app-skeleton
 
-```
-kubectl -n app-skeleton get pod
-kubectl -n app-skeleton logs <app-skeleton pod>
+# NAME                  TYPE                                  DATA      AGE
+# default-token-gxdgs   kubernetes.io/service-account-token   3         27s
+# osbapi-app-secret     Opaque                                6         18s
+
+make deploy-app
+
+export POD_NAME=$(kubectl get pods --namespace app-skeleton -l "app=osbapiapp,release=app-skeleton" -o jsonpath="{.items[0].metadata.name}")
+kubectl -n app-skeleton logs $POD_NAME
+
+# 2018/10/15 02:27:05 open /etc/osbapi-svc-credentials/baseurl: no such file or directory
+# 2018/10/15 02:27:08 open /etc/osbapi-svc-credentials/baseurl: no such file or directory
+# 2018/10/15 02:27:11 open /etc/osbapi-svc-credentials/baseurl: no such file or directory
 ```
 
 # For test with GKE
