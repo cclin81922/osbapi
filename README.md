@@ -73,6 +73,18 @@ kubectl apply -f manifests/service-account-helm.yaml
 helm init --service-account helm
 ```
 
+Second, bring up baas
+
+```
+go get -u github.com/cclin81922/osbapi-baas/cmd/osbapibaas
+cd ~/go/src/github.com/cclin81922/osbapi-baas
+PULL=IfNotPresent make push deploy-baas
+
+export POD_NAME=$(kubectl get pods --namespace baas-skeleton -l "app=osbapibaas,release=baas-skeleton" -o jsonpath="{.items[0].metadata.name}")
+kubectl -n baas-skeleton logs $POD_NAME
+
+# ?
+```
 
 # Related Projects
 
