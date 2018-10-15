@@ -31,7 +31,7 @@ WAIT UNTIL SC READY
 
 make deploy-broker
 
-svcat get brokers
+svcat get brokers broker-skeleton
 
 #        NAME         NAMESPACE                                      URL                                      STATUS  
 # +-----------------+-----------+---------------------------------------------------------------------------+--------+
@@ -48,10 +48,9 @@ cd ~/go/src/github.com/cclin81922/osbapi-app
 make provision-svc
 make bind-svc
 
-kubectl get secrets -n app-skeleton
+kubectl get secrets osbapi-app-secret -n app-skeleton
 
 # NAME                  TYPE                                  DATA      AGE
-# default-token-gxdgs   kubernetes.io/service-account-token   3         27s
 # osbapi-app-secret     Opaque                                6         18s
 
 make deploy-app
