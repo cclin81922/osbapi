@@ -27,6 +27,8 @@ svcat get brokers
 #   NAME   NAMESPACE   URL   STATUS  
 # +------+-----------+-----+--------+
 
+WAIT UNTIL SC READY
+
 make deploy-broker
 
 svcat get brokers
@@ -34,6 +36,8 @@ svcat get brokers
 #        NAME         NAMESPACE                                      URL                                      STATUS  
 # +-----------------+-----------+---------------------------------------------------------------------------+--------+
 #   broker-skeleton               https://broker-skeleton-broker-skeleton.broker-skeleton.svc.cluster.local   Ready   
+
+WAIT UNTIL BROKER READY
 ```
 
 Finally, bring up app
