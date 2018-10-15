@@ -68,7 +68,7 @@ TODO
 Fisrt, bring up a GKE cluster
 
 ```
-gcloud container clusters create --num-nodes 2
+gcloud container clusters create k8s-osbapi --num-nodes 2 --cluster-version=1.10
 kubectl apply -f manifests/service-account-helm.yaml
 helm init --service-account helm
 ```
