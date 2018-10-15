@@ -22,7 +22,7 @@ go get -u github.com/cclin81922/osb-starter-pack/cmd/servicebroker
 cd ~/go/src/github.com/cclin81922/osb-starter-pack
 make deploy-sc
 
-svcat get brokers
+svcat get brokers # KEEP TRYING
 
 #   NAME   NAMESPACE   URL   STATUS  
 # +------+-----------+-----+--------+
@@ -31,7 +31,7 @@ WAIT UNTIL SC READY
 
 make deploy-broker
 
-svcat get brokers broker-skeleton
+svcat get brokers broker-skeleton # KEEP TRYING
 
 #        NAME         NAMESPACE                                      URL                                      STATUS  
 # +-----------------+-----------+---------------------------------------------------------------------------+--------+
@@ -73,6 +73,8 @@ WAIT UNTIL GKE CLUSTER READY
 kubectl apply -f manifests/service-account-helm.yaml
 helm init --service-account helm
 
+helm list # KEEP TRYING
+
 WAIT UNTIL HELM TILLER READY
 ```
 
@@ -86,7 +88,7 @@ PULL=IfNotPresent make push deploy-baas
 export POD_NAME=$(kubectl get pods --namespace baas-skeleton -l "app=osbapibaas,release=baas-skeleton" -o jsonpath="{.items[0].metadata.name}")
 kubectl -n baas-skeleton logs $POD_NAME
 
-# ?
+# 2018/10/15 03:38:17 Base url is https://localhost.localdomain:443/
 ```
 
 Third, bring up broker
@@ -96,7 +98,7 @@ go get -u github.com/cclin81922/osb-starter-pack/cmd/servicebroker
 cd ~/go/src/github.com/cclin81922/osb-starter-pack
 make deploy-sc
 
-svcat get brokers
+svcat get brokers # KEEP TRYING
 
 #   NAME   NAMESPACE   URL   STATUS  
 # +------+-----------+-----+--------+
@@ -105,7 +107,7 @@ WAIT UNTIL SC READY
 
 PULL=IfNotPresent make push deploy-broker
 
-svcat get brokers broker-skeleton
+svcat get brokers broker-skeleton # KEEP TRYING
 
 #        NAME         NAMESPACE                                      URL                                      STATUS  
 # +-----------------+-----------+---------------------------------------------------------------------------+--------+
@@ -132,7 +134,7 @@ PULL=IfNotPresent make push deploy-app
 export POD_NAME=$(kubectl get pods --namespace app-skeleton -l "app=osbapiapp,release=app-skeleton" -o jsonpath="{.items[0].metadata.name}")
 kubectl -n app-skeleton logs $POD_NAME
 
-# 2018/10/15 02:48:46 2018-10-15 02:48:46.154432755 +0000 UTC m=+3.001906152
+# 2018/10/15 03:43:01 2018-10-15 03:43:01.878283557 +0000 UTC m=+3.001102517
 ```
 
 # Related Projects
