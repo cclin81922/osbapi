@@ -63,12 +63,13 @@ kubectl -n app-skeleton logs $POD_NAME
 
 # For test with GKE
 
-TODO
-
 Fisrt, bring up a GKE cluster
 
 ```
 gcloud container clusters create k8s-osbapi --num-nodes 2 --cluster-version=1.10
+
+WAIT UNTIL GKE CLUSTER READY
+
 kubectl apply -f manifests/service-account-helm.yaml
 helm init --service-account helm
 ```
