@@ -21,7 +21,19 @@ Second, bring up broker
 go get -u github.com/cclin81922/osb-starter-pack/cmd/servicebroker
 cd ~/go/src/github.com/cclin81922/osb-starter-pack
 make deploy-sc
-IMAGE=cclin81922/osbapi-broker TAG=latest PULL=Never make deploy-broker
+
+svcat get brokers
+
+#   NAME   NAMESPACE   URL   STATUS  
+# +------+-----------+-----+--------+
+
+make deploy-broker
+
+svcat get brokers
+
+#        NAME         NAMESPACE                                      URL                                      STATUS  
+# +-----------------+-----------+---------------------------------------------------------------------------+--------+
+#   broker-skeleton               https://broker-skeleton-broker-skeleton.broker-skeleton.svc.cluster.local   Ready   
 ```
 
 Finally, bring up app
