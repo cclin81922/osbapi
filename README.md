@@ -86,6 +86,52 @@ kubectl -n baas-skeleton logs $POD_NAME
 # ?
 ```
 
+Third, bring up broker
+
+```
+go get -u github.com/cclin81922/osb-starter-pack/cmd/servicebroker
+cd ~/go/src/github.com/cclin81922/osb-starter-pack
+make deploy-sc
+
+svcat get brokers
+
+#   NAME   NAMESPACE   URL   STATUS  
+# +------+-----------+-----+--------+
+
+WAIT UNTIL SC READY
+
+PULL=IfNotPresent make push deploy-broker
+
+svcat get brokers broker-skeleton
+
+#        NAME         NAMESPACE                                      URL                                      STATUS  
+# +-----------------+-----------+---------------------------------------------------------------------------+--------+
+#   broker-skeleton               https://broker-skeleton-broker-skeleton.broker-skeleton.svc.cluster.local   Ready   
+
+WAIT UNTIL BROKER READY
+```
+
+Fourth, bring up app
+
+```
+go get -u github.com/cclin81922/osbapi-app/cmd/osbapiapp
+cd ~/go/src/github.com/cclin81922/osbapi-app
+make provision-svc
+make bind-svc
+
+kubectl get secrets osbapi-app-secret -n app-skeleton
+
+# NAME                  TYPE                                  DATA      AGE
+# osbapi-app-secret     Opaque                                6         18s
+
+PULL=IfNotPresent make push deploy-app
+
+export POD_NAME=$(kubectl get pods --namespace app-skeleton -l "app=osbapiapp,release=app-skeleton" -o jsonpath="{.items[0].metadata.name}")
+kubectl -n app-skeleton logs $POD_NAME
+
+# 2018/10/15 02:48:46 2018-10-15 02:48:46.154432755 +0000 UTC m=+3.001906152
+```
+
 # Related Projects
 
 * [osbapi-app](https://github.com/cclin81922/osbapi-app)
