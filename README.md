@@ -58,9 +58,7 @@ make deploy-app
 export POD_NAME=$(kubectl get pods --namespace app-skeleton -l "app=osbapiapp,release=app-skeleton" -o jsonpath="{.items[0].metadata.name}")
 kubectl -n app-skeleton logs $POD_NAME
 
-# 2018/10/15 02:35:22 Post https://baas-skeleton.baas-skeleton.svc.cluster.local/echo: dial tcp: lookup baas-skeleton.baas-skeleton.svc.cluster.local on 10.96.0.10:53: no such host
-# 2018/10/15 02:35:25 Post https://baas-skeleton.baas-skeleton.svc.cluster.local/echo: dial tcp: lookup baas-skeleton.baas-skeleton.svc.cluster.local on 10.96.0.10:53: no such host
-
+# 2018/10/15 02:48:46 2018-10-15 02:48:46.154432755 +0000 UTC m=+3.001906152
 ```
 
 # For test with GKE
