@@ -65,6 +65,15 @@ kubectl -n app-skeleton logs $POD_NAME
 
 TODO
 
+Fisrt, bring up a GKE cluster
+
+```
+gcloud container clusters create --num-nodes 2
+kubectl apply -f manifests/service-account-helm.yaml
+helm init --service-account helm
+```
+
+
 # Related Projects
 
 * [osbapi-app](https://github.com/cclin81922/osbapi-app)
