@@ -8,6 +8,9 @@ helm init
 go get -u github.com/cclin81922/osbapi-baas/cmd/osbapibaas
 cd ~/go/src/github.com/cclin81922/osbapi-baas
 make deploy-baas
+
+export POD_NAME=$(kubectl get pods --namespace baas-skeleton -l "app=osbapibaas,release=baas-skeleton" -o jsonpath="{.items[0].metadata.name}")
+kubectl -n baas-skeleton logs $POD_NAME
 ```
 
 Second, bring up broker
