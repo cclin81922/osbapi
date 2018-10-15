@@ -7,7 +7,7 @@ helm init
 
 go get -u github.com/cclin81922/osbapi-baas/cmd/osbapibaas
 cd ~/go/src/github.com/cclin81922/osbapi-baas
-TAG=latest PULL=Never make deploy-baas
+make deploy-baas
 ```
 
 Second, bring up broker
