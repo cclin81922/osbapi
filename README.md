@@ -11,6 +11,8 @@ make deploy-baas
 
 export POD_NAME=$(kubectl get pods --namespace baas-skeleton -l "app=osbapibaas,release=baas-skeleton" -o jsonpath="{.items[0].metadata.name}")
 kubectl -n baas-skeleton logs $POD_NAME
+
+# 2018/10/15 02:06:06 Base url is https://localhost.localdomain:443/
 ```
 
 Second, bring up broker
